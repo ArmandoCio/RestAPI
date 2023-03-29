@@ -20,11 +20,11 @@ def predict():
     # Read the image from the request as a binary file
     image_data = request.get_data()
 
-    # conver the binary data to an image using PIL
+    # convert the binary data to an image using PIL
     image = Image.open(io.BytesIO(image_data))
 
     # Decode the JPEG image
-    image = tf.image.resize(image, (512, 384))
+    image = tf.image.resize(image, (180, 180))
 
     # Add the batch dimension
     image_array = keras.preprocessing.image.img_to_array(image)
@@ -39,4 +39,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(host="localhost", port=8000, debug=True)
+    app.run(host="localhost", port=5080, debug=True)
